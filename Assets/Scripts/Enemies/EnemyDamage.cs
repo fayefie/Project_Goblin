@@ -34,7 +34,7 @@ public class EnemyDamage : MonoBehaviour
         if (canDealDamage == false)
         {
             damageGracePeriod -= Time.deltaTime;
-            Debug.Log("can deal damage again in: " + damageGracePeriod);
+            Debug.Log("can deal damage again in: " + damageGracePeriod); // REMOVE AFTER IMPLIMENTATION
 
             if (damageGracePeriod <= 0)
             {
@@ -44,7 +44,7 @@ public class EnemyDamage : MonoBehaviour
         }
     }
 
-    private void OnTriggerEnter2D(Collider2D collision)
+    private void OnTriggerStay2D(Collider2D collision)
     {
         if (collision.gameObject.tag == "Player" && canDealDamage == true)
         {
