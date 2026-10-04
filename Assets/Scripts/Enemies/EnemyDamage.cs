@@ -8,6 +8,8 @@ public class EnemyDamage : MonoBehaviour
     [SerializeField] private float damageGracePeriod;
     private bool canDealDamage = true;
 
+    
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -15,8 +17,19 @@ public class EnemyDamage : MonoBehaviour
         damageGracePeriod = timeBeforeDamage;
     }
 
+    private void Awake()
+    {
+        PolygonCollider2D polygonCollider2D = gameObject.GetComponent<PolygonCollider2D>();
+        polygonCollider2D.isTrigger = true;
+    }
+
     // Update is called once per frame
     void Update()
+    {
+        PlayerIFrames();
+    }
+
+    private void PlayerIFrames()
     {
         if (canDealDamage == false)
         {
@@ -31,7 +44,7 @@ public class EnemyDamage : MonoBehaviour
         }
     }
 
-    private void OnCollisionEnter2D(Collision2D collision)
+    private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.gameObject.tag == "Player" && canDealDamage == true)
         {
