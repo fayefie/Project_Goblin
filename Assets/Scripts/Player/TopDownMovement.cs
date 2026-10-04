@@ -13,6 +13,7 @@ public class TopDownMovement : MonoBehaviour
     private void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
+        rb.freezeRotation = true;
     }
 
     private void FixedUpdate()
