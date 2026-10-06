@@ -2,9 +2,8 @@ using UnityEngine;
 
 public class EnemyFollow : MonoBehaviour
 {
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
     [SerializeField] private Transform target;
-    [SerializeField] private float movementSpeed = 1.0f;
+    public EnemyStatsSO enemyStats;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -22,6 +21,11 @@ public class EnemyFollow : MonoBehaviour
     private void FixedUpdate()
     {
         // move towards player
-        transform.position = Vector2.MoveTowards(transform.position, target.position, movementSpeed * Time.deltaTime);
+        transform.position = Vector2.MoveTowards(transform.position, target.position, enemyStats.movementSpeed * Time.deltaTime);
+    }
+
+    public void MoveTowardsPlayer()
+    {
+
     }
 }

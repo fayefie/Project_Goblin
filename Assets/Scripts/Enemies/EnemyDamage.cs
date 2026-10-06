@@ -3,7 +3,7 @@ using UnityEngine;
 public class EnemyDamage : MonoBehaviour
 {
     [SerializeField] PlayerStats playerStats;
-    [SerializeField] private float damageDealt = 7.0f;
+    public EnemyStatsSO enemyStats;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -29,7 +29,7 @@ public class EnemyDamage : MonoBehaviour
     {
         if (collision.gameObject.tag == "Player" && playerStats.canBeDamaged == true)
         {
-            playerStats.TakeDamage(damageDealt);
+            playerStats.TakeDamage(enemyStats.damageDealt);
             playerStats.canBeDamaged = false;
         }
     }
