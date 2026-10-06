@@ -12,5 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ce5ea0aafc73daa489a0ad4d595c7b9a, type: 3}
   m_Name: Rat
   m_EditorClassIdentifier: Assembly-CSharp::EnemyStatsSO
-  damageDealt: 0
-  movementSpeed: 0
+  damageDealt: 7
+  movementSpeed: 2.5

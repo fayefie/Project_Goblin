@@ -23,9 +23,4 @@ public class EnemyFollow : MonoBehaviour
         // move towards player
         transform.position = Vector2.MoveTowards(transform.position, target.position, enemyStats.movementSpeed * Time.deltaTime);
     }
-
-    public void MoveTowardsPlayer()
-    {
-
-    }
 }
