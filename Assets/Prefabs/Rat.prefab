@@ -13,8 +13,6 @@ GameObject:
   - component: {fileID: 8365094219330959617}
   - component: {fileID: 8188661486971322551}
   - component: {fileID: 7947575447938688058}
-  - component: {fileID: 7353286505344038864}
-  - component: {fileID: 3991595718032649290}
   m_Layer: 0
   m_Name: Rat
   m_TagString: Untagged
@@ -30,10 +28,10 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4552870944468649221}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -7.452092, y: -3.4496171, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
+  m_LocalScale: {x: 1.3, y: 1.3, z: 1.3}
+  m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -183,32 +181,4 @@ MonoBehaviour:
   target: {fileID: 0}
   playerStats: {fileID: 0}
   animator: {fileID: 8188661486971322551}
-  enemyStats: {fileID: 11400000, guid: 688bc3347ee8cd447bc7e3109c99db84, type: 2}
---- !u!114 &7353286505344038864
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4552870944468649221}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5e746239b8b6b254297a90d5a835a689, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::EnemyFollow
-  target: {fileID: 0}
-  enemyStats: {fileID: 11400000, guid: 688bc3347ee8cd447bc7e3109c99db84, type: 2}
---- !u!114 &3991595718032649290
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4552870944468649221}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 879e9872e59810f44949e343d170bb33, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::EnemyDamage
-  playerStats: {fileID: 0}
   enemyStats: {fileID: 11400000, guid: 688bc3347ee8cd447bc7e3109c99db84, type: 2}

@@ -15,7 +15,7 @@ MonoBehaviour:
   enemyHealth: 20
   damageDealt: 7
   movementSpeed: 3
-  droppedXP: 0
+  droppedXP: 10
   droppedXPSmall: 10
   droppedXPMedium: 30
   droppedXPLarge: 100
