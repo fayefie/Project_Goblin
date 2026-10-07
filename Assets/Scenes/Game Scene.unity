@@ -236553,6 +236553,11 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 6930413877071780031, guid: 497be12e4906c5b41b9253a21fe8932e, type: 3}
   m_PrefabInstance: {fileID: 15696028}
   m_PrefabAsset: {fileID: 0}
+--- !u!212 &937259084 stripped
+SpriteRenderer:
+  m_CorrespondingSourceObject: {fileID: 7474630067162194414, guid: 18f01a05f9648104392f9213b1ad459a, type: 3}
+  m_PrefabInstance: {fileID: 1524027379468028535}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &975489943
 GameObject:
   m_ObjectHideFlags: 0
@@ -237077,11 +237082,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6860930604145536875, guid: 18f01a05f9648104392f9213b1ad459a, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -7.452092
+      value: -4.87
       objectReference: {fileID: 0}
     - target: {fileID: 6860930604145536875, guid: 18f01a05f9648104392f9213b1ad459a, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -3.4496171
+      value: -5.18
       objectReference: {fileID: 0}
     - target: {fileID: 6860930604145536875, guid: 18f01a05f9648104392f9213b1ad459a, type: 3}
       propertyPath: m_LocalPosition.z
@@ -237131,7 +237136,13 @@ PrefabInstance:
       propertyPath: playerStats
       value: 
       objectReference: {fileID: 2084604352}
-    m_RemovedComponents: []
+    - target: {fileID: 7947575447938688058, guid: 18f01a05f9648104392f9213b1ad459a, type: 3}
+      propertyPath: spriteRenderer
+      value: 
+      objectReference: {fileID: 937259084}
+    m_RemovedComponents:
+    - {fileID: 7353286505344038864, guid: 18f01a05f9648104392f9213b1ad459a, type: 3}
+    - {fileID: 3991595718032649290, guid: 18f01a05f9648104392f9213b1ad459a, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []

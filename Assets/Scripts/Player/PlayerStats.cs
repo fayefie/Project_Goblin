@@ -3,7 +3,7 @@ using UnityEngine;
 public class PlayerStats : MonoBehaviour
 {
     [Header("Health Parameters")]
-    [SerializeField] private float health;
+    public float health;
     [SerializeField] private float maxHealth = 100.0f;
     [SerializeField] private float baseIFrames = 1.0f;
     [SerializeField] private float damageGracePeriod;

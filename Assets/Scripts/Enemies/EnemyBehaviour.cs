@@ -23,7 +23,8 @@ public abstract class EnemyBehaviour : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        HandleEnemyAnimations();
+        enemyFacesPlayer();
     }
 
     private void FixedUpdate()
@@ -35,12 +36,10 @@ public abstract class EnemyBehaviour : MonoBehaviour
     {
         // enemy walks towards the player
         transform.position = Vector2.MoveTowards(transform.position, target.position, enemyStats.movementSpeed * Time.deltaTime);
+    }
 
-        // enemy faces player when moving
-        //transform.LookAt(target);
-
-        
-
+    private void HandleEnemyAnimations()
+    {
         // handle idle to run animation
         if (enemyStats.movementSpeed > 0)
         {
@@ -50,6 +49,28 @@ public abstract class EnemyBehaviour : MonoBehaviour
         {
             animator.SetBool("isRunning", false);
         }
+
+        // switch to idle if player dies
+        if (playerStats.health <= 0)
+        {
+            animator.SetBool("isRunning", false);
+        }
+    }
+
+    private void enemyFacesPlayer()
+    {
+        Vector3 scale = transform.localScale;
+
+        if (target.transform.position.x > transform.position.x)
+        {
+            scale.x = Mathf.Abs(scale.x);
+        }
+        else
+        {
+            scale.x = Mathf.Abs(scale.x) * -1;
+        }
+
+        transform.localScale = scale;
     }
 
     private void OnTriggerStay2D(Collider2D collision)
