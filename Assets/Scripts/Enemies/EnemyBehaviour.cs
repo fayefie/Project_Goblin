@@ -55,6 +55,16 @@ public abstract class EnemyBehaviour : MonoBehaviour
         {
             animator.SetBool("isRunning", false);
         }
+
+        // attack animation
+        if (playerStats.canBeDamaged == false)
+        {
+            animator.SetBool("isAttacking", true);
+        }
+        else
+        {
+            animator.SetBool("isAttacking", false);
+        }
     }
 
     private void enemyFacesPlayer()
