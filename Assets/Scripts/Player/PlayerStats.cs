@@ -8,6 +8,8 @@ public class PlayerStats : MonoBehaviour
     [SerializeField] private float baseIFrames = 1.0f;
     [SerializeField] private float damageGracePeriod;
     public bool canBeDamaged = true;
+    public TopDownMovement topDownMovement;
+    [SerializeField] private Animator animator;
 
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -21,6 +23,7 @@ public class PlayerStats : MonoBehaviour
     void Update()
     {
         PlayerIFrames();
+        HandleAnimations();
     }
 
     public void TakeDamage(float damageAmount)
@@ -46,4 +49,35 @@ public class PlayerStats : MonoBehaviour
         }
     }
 
+    private void HandleAnimations()
+    {
+        // running
+        if (topDownMovement.isPlayerMoving == true)
+        {
+            animator.SetBool("isRunning", true);
+        }
+        else
+        {
+            animator.SetBool("isRunning", false);
+        }
+
+        // taking damage
+        if (damageGracePeriod < 1)
+        {
+            animator.SetBool("isTakingDamage", true);
+        }
+        else if (damageGracePeriod == 1)
+        {
+            animator.SetBool("isTakingDamage", false);
+        }
+
+        // dealing damage
+        // add later
+
+        // dying
+        if (health <= 0)
+        {
+            animator.SetBool("isDead", true);
+        }
+    }
 }
