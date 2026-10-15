@@ -1,9 +1,11 @@
 using UnityEngine;
+using UnityEngine.UI;
 
 public class PlayerStats : MonoBehaviour
 {
     [Header("Health Parameters")]
     public float health;
+    public Image healthBar;
     [SerializeField] private float maxHealth = 100.0f;
     [SerializeField] private float baseIFrames = 1.0f;
     [SerializeField] private float damageGracePeriod;
@@ -22,6 +24,9 @@ public class PlayerStats : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        // health ui
+        healthBar.fillAmount = Mathf.Clamp(health / maxHealth, 0, 1);
+
         PlayerIFrames();
         HandleAnimations();
     }
