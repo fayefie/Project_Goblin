@@ -12,9 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c50bf69c5a8be4a4594868eb5210ffe5, type: 3}
   m_Name: Sword Weapon
   m_EditorClassIdentifier: Assembly-CSharp::WeaponsSO
-  prefab: {fileID: 0}
-  weaponDamage: 0
-  weaponAttackSpeed: 0
-  weaponCooldown: 0
-  weaponCount: 0
-  weaponPierce: 0
+  prefab: {fileID: 7998416793887323301, guid: fc4785803c0f66c42b984859cfbacd9f, type: 3}
+  damage: 20
+  attackSpeed: 2
+  cooldownDuration: 3
+  count: 1
+  pierce: 0

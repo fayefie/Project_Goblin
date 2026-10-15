@@ -5,9 +5,9 @@ public class WeaponsSO : ScriptableObject
 {
     [Header("Weapon Stats")]
     public GameObject prefab;
-    public float weaponDamage;
-    public float weaponAttackSpeed;
-    public float weaponCooldown;
-    public int weaponCount;
-    public int weaponPierce;
+    public float damage;
+    public float attackSpeed;
+    public float cooldownDuration;
+    public int count;
+    public int pierce;
 }

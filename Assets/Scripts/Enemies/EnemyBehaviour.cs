@@ -7,10 +7,19 @@ public abstract class EnemyBehaviour : MonoBehaviour
     [SerializeField] private Animator animator;
     public EnemyStatsSO enemyStats;
 
+    // current stats
+    float currentMoveSpeed;
+    float currentHealth;
+    float currentDamage;
+
     private void Awake()
     {
         PolygonCollider2D polygonCollider2D = gameObject.GetComponent<PolygonCollider2D>();
         polygonCollider2D.isTrigger = true;
+
+        currentMoveSpeed = enemyStats.movementSpeed;
+        currentHealth = enemyStats.enemyHealth;
+        currentDamage = enemyStats.enemyDamage;
     }
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -30,6 +39,21 @@ public abstract class EnemyBehaviour : MonoBehaviour
     private void FixedUpdate()
     {
         MoveTowardsPlayer();
+    }
+
+    public void TakeDamage(float dmg)
+    {
+        currentHealth -= dmg;
+
+        if (currentHealth <= 0)
+        {
+            Kill();
+        }
+    }
+
+    public void Kill()
+    {
+        Destroy(gameObject);
     }
 
     private void MoveTowardsPlayer()
@@ -87,7 +111,7 @@ public abstract class EnemyBehaviour : MonoBehaviour
     {
         if (collision.gameObject.tag == "Player" && playerStats.canBeDamaged == true)
         {
-            playerStats.TakeDamage(enemyStats.damageDealt);
+            playerStats.TakeDamage(enemyStats.enemyDamage);
             playerStats.canBeDamaged = false;
         }
     }

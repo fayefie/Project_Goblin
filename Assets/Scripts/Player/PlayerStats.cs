@@ -76,9 +76,6 @@ public class PlayerStats : MonoBehaviour
             animator.SetBool("isTakingDamage", false);
         }
 
-        // dealing damage
-        // add later
-
         // dying
         if (health <= 0)
         {

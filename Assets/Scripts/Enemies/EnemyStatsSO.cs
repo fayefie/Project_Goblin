@@ -7,7 +7,7 @@ public class EnemyStatsSO : ScriptableObject
     public float enemyHealth;
 
     [Header("Enemy Damage")]
-    public float damageDealt;
+    public float enemyDamage;
 
     [Header("Enemy Speed")]
     public float movementSpeed;
