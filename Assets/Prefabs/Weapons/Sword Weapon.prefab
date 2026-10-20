@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 1935024815933234739}
   m_Layer: 0
   m_Name: Sword Weapon
-  m_TagString: Untagged
+  m_TagString: Weapon
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -128,8 +128,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5adb097138a03d0429be658acef59404, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::SwordBehaviour
-  weaponData: {fileID: 11400000, guid: e7875be21b950ad40b90776d6aefeedd, type: 2}
   destroyAfterSeconds: 0.6
+  weaponData: {fileID: 11400000, guid: e7875be21b950ad40b90776d6aefeedd, type: 2}
 --- !u!61 &1935024815933234739
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -137,7 +137,7 @@ BoxCollider2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2708104932712546828}
-  m_Enabled: 0
+  m_Enabled: 1
   serializedVersion: 3
   m_Density: 1
   m_Material: {fileID: 0}

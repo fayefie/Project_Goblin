@@ -171,29 +171,17 @@ PrefabInstance:
       propertyPath: healthBar
       value: 
       objectReference: {fileID: 765415225}
-    - target: {fileID: 5530273327392500854, guid: 497be12e4906c5b41b9253a21fe8932e, type: 3}
-      propertyPath: m_LocalScale.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5530273327392500854, guid: 497be12e4906c5b41b9253a21fe8932e, type: 3}
-      propertyPath: m_LocalScale.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5530273327392500854, guid: 497be12e4906c5b41b9253a21fe8932e, type: 3}
-      propertyPath: m_LocalScale.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5530273327392500854, guid: 497be12e4906c5b41b9253a21fe8932e, type: 3}
-      propertyPath: m_ConstrainProportionsScale
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 8392094897183629641, guid: 497be12e4906c5b41b9253a21fe8932e, type: 3}
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
     m_RemovedComponents: []
-    m_RemovedGameObjects: []
-    m_AddedGameObjects: []
+    m_RemovedGameObjects:
+    - {fileID: 1076984759914717144, guid: 497be12e4906c5b41b9253a21fe8932e, type: 3}
+    m_AddedGameObjects:
+    - targetCorrespondingSourceObject: {fileID: 1002863853561027458, guid: 497be12e4906c5b41b9253a21fe8932e, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1255046971}
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 497be12e4906c5b41b9253a21fe8932e, type: 3}
 --- !u!1 &22181235
@@ -236849,6 +236837,14 @@ PrefabInstance:
       propertyPath: playerStats
       value: 
       objectReference: {fileID: 2084604352}
+    - target: {fileID: 7947575447938688058, guid: 18f01a05f9648104392f9213b1ad459a, type: 3}
+      propertyPath: weaponStats
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 7947575447938688058, guid: 18f01a05f9648104392f9213b1ad459a, type: 3}
+      propertyPath: baseEnemyDamageFrames
+      value: 0.5
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -237043,6 +237039,52 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1421319438}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1255046970
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1255046971}
+  - component: {fileID: 1255046972}
+  m_Layer: 6
+  m_Name: Sword Controller
+  m_TagString: Weapon
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1255046971
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1255046970}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 2084604348}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1255046972
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1255046970}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6ba7aa1e4cd184c478602778fe39689e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::SwordController
+  weaponData: {fileID: 11400000, guid: e7875be21b950ad40b90776d6aefeedd, type: 2}
+  currentCooldown: 0
 --- !u!1 &1281831888
 GameObject:
   m_ObjectHideFlags: 0

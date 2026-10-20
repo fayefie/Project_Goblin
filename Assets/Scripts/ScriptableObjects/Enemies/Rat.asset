@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Rat
   m_EditorClassIdentifier: Assembly-CSharp::EnemyStatsSO
   enemyHealth: 20
-  damageDealt: 7
+  enemyDamage: 7
   movementSpeed: 2.8
   droppedXP: 10
   droppedXPSmall: 10

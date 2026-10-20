@@ -1,3 +1,4 @@
+using UnityEditorInternal;
 using UnityEngine;
 
 public abstract class EnemyBehaviour : MonoBehaviour
@@ -6,11 +7,15 @@ public abstract class EnemyBehaviour : MonoBehaviour
     [SerializeField] private PlayerStats playerStats;
     [SerializeField] private Animator animator;
     public EnemyStatsSO enemyStats;
+    public float baseEnemyDamageFrames = 1.0f;
+    public float currentEnemyDamageFrames;
+    private bool isEnemyDamaged = false;
+
 
     // current stats
-    float currentMoveSpeed;
-    float currentHealth;
-    float currentDamage;
+    public float currentMoveSpeed;
+    public float currentHealth;
+    public float currentDamage;
 
     private void Awake()
     {
@@ -20,6 +25,7 @@ public abstract class EnemyBehaviour : MonoBehaviour
         currentMoveSpeed = enemyStats.movementSpeed;
         currentHealth = enemyStats.enemyHealth;
         currentDamage = enemyStats.enemyDamage;
+        currentEnemyDamageFrames = baseEnemyDamageFrames;
     }
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -27,6 +33,8 @@ public abstract class EnemyBehaviour : MonoBehaviour
     {
         // find player
         target = GameObject.FindGameObjectWithTag("Player").GetComponent<Transform>();
+
+        currentHealth = enemyStats.enemyHealth;
     }
 
     // Update is called once per frame
@@ -34,6 +42,11 @@ public abstract class EnemyBehaviour : MonoBehaviour
     {
         HandleEnemyAnimations();
         enemyFacesPlayer();
+
+        if (isEnemyDamaged == true)
+        {
+            currentEnemyDamageFrames -= Time.deltaTime;
+        }
     }
 
     private void FixedUpdate()
@@ -89,6 +102,14 @@ public abstract class EnemyBehaviour : MonoBehaviour
         {
             animator.SetBool("isAttacking", false);
         }
+
+        // exit damage animation
+        if (currentEnemyDamageFrames <= 0)
+        {
+            animator.SetBool("isDamaged", false);
+            isEnemyDamaged = false;
+            currentEnemyDamageFrames = baseEnemyDamageFrames;
+        }
     }
 
     private void enemyFacesPlayer()
@@ -113,6 +134,15 @@ public abstract class EnemyBehaviour : MonoBehaviour
         {
             playerStats.TakeDamage(enemyStats.enemyDamage);
             playerStats.canBeDamaged = false;
+        }
+    }
+
+    protected void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.gameObject.tag == "Weapon")
+        {
+            animator.SetBool("isDamaged", true);
+            isEnemyDamaged = true;
         }
     }
 }
