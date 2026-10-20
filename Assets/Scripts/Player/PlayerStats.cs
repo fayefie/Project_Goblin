@@ -44,15 +44,15 @@ public class PlayerStats : MonoBehaviour
         HandleAnimations();
     }
 
-    private float LevelUp()
-    {
-        if (xp >= xpToLevelUp)
-        {
-            playerLevel++;
-            xp = baseXp;
-            //xpToLevelUp = xpToLevelUp * 0.5;
-        }
-    }
+    //private float LevelUp()
+    //{
+    //    if (xp >= xpToLevelUp)
+    //    {
+    //        playerLevel++;
+    //        xp = baseXp;
+    //        //xpToLevelUp = xpToLevelUp * 0.5;
+    //    }
+    //}
 
     public void TakeDamage(float damageAmount)
     {
