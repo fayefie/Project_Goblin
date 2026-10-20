@@ -236752,8 +236752,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -409.21405, y: 269.20956}
-  m_SizeDelta: {x: 301.2093, y: 13.2405}
+  m_AnchoredPosition: {x: -408.62112, y: 269.20956}
+  m_SizeDelta: {x: 302.3951, y: 13.2405}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &765415225
 MonoBehaviour:
@@ -236924,6 +236924,10 @@ PrefabInstance:
       propertyPath: target
       value: 
       objectReference: {fileID: 2084604348}
+    - target: {fileID: 7947575447938688058, guid: 18f01a05f9648104392f9213b1ad459a, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7947575447938688058, guid: 18f01a05f9648104392f9213b1ad459a, type: 3}
       propertyPath: playerStats
       value: 
