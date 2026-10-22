@@ -1,4 +1,6 @@
+using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.InputSystem;
 using UnityEngine.UI;
 
 public class PlayerStats : MonoBehaviour
@@ -6,15 +8,19 @@ public class PlayerStats : MonoBehaviour
     [Header("Health Parameters")]
     public float health;
     public Image healthBar;
-    public float xp;
-    public Image xpBar;
-    private float baseXp = 0;
-    public int playerLevel;
-    public float xpToLevelUp;
     [SerializeField] private float maxHealth = 100.0f;
     [SerializeField] private float baseIFrames = 1.0f;
     [SerializeField] private float damageGracePeriod;
     public bool canBeDamaged = true;
+
+    [Header("XP Parameters")]
+    public int xp;
+    public Image xpBar;
+    private int baseXp = 0;
+    public int playerLevel;
+    public int xpNeededToLevelUp;
+    private int xpForFirstLevel = 5;
+
     public TopDownMovement topDownMovement;
     [SerializeField] private Animator animator;
 
@@ -27,7 +33,7 @@ public class PlayerStats : MonoBehaviour
 
         // xp and level up
         xp = baseXp;
-        xpToLevelUp = 100;
+        xpNeededToLevelUp = xpForFirstLevel;
         playerLevel = 0;
     }
 
@@ -38,21 +44,47 @@ public class PlayerStats : MonoBehaviour
         healthBar.fillAmount = Mathf.Clamp(health / maxHealth, 0, 1);
 
         // xp ui
-        xpBar.fillAmount = Mathf.Clamp(xp / xpToLevelUp, 0, 1);
+        //xpBar.fillAmount += xp / xpNeededToLevelUp; FIX
 
+        LevelUp();
         PlayerIFrames();
         HandleAnimations();
     }
 
-    //private float LevelUp()
-    //{
-    //    if (xp >= xpToLevelUp)
-    //    {
-    //        playerLevel++;
-    //        xp = baseXp;
-    //        //xpToLevelUp = xpToLevelUp * 0.5;
-    //    }
-    //}
+    private void LevelUp()
+    {
+
+        // leveling curve
+        if (playerLevel == 0)
+        {
+            xpNeededToLevelUp = xpForFirstLevel;
+        }
+        else if (playerLevel >= 1 && playerLevel <= 20)
+        {
+            xpNeededToLevelUp = xpForFirstLevel + (playerLevel * 10);
+        }
+        else if (playerLevel >= 20 && playerLevel <= 40)
+        {
+            xpNeededToLevelUp = xpForFirstLevel + (playerLevel * 13);
+        }
+        else if (playerLevel > 41)
+        {
+            xpNeededToLevelUp = xpForFirstLevel + (playerLevel * 16);
+        }
+
+        // level up
+        if (xp >= xpNeededToLevelUp)
+        {
+            playerLevel++;
+            xp = baseXp;
+        }
+
+        // debug
+        if (Keyboard.current.kKey.wasReleasedThisFrame)
+        {
+            xp++;
+        }
+    }
 
     public void TakeDamage(float damageAmount)
     {
