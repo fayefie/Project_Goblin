@@ -44,7 +44,8 @@ public class PlayerStats : MonoBehaviour
         healthBar.fillAmount = Mathf.Clamp(health / maxHealth, 0, 1);
 
         // xp ui
-        //xpBar.fillAmount += xp / xpNeededToLevelUp; FIX
+        float xpBarFill = ((float)xp / xpNeededToLevelUp);
+        xpBar.fillAmount = xpBarFill;
 
         LevelUp();
         PlayerIFrames();
