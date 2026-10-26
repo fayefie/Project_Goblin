@@ -12,8 +12,7 @@ GameObject:
   - component: {fileID: 8877973227656239124}
   - component: {fileID: 3647662994731816663}
   - component: {fileID: 4113994160235518122}
-  - component: {fileID: 1935024815933234739}
-  - component: {fileID: -1152116198898644561}
+  - component: {fileID: 6899131657355713366}
   m_Layer: 0
   m_Name: Sword Weapon
   m_TagString: Weapon
@@ -131,8 +130,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::SwordBehaviour
   destroyAfterSeconds: 0.6
   weaponData: {fileID: 11400000, guid: e7875be21b950ad40b90776d6aefeedd, type: 2}
---- !u!61 &1935024815933234739
-BoxCollider2D:
+--- !u!60 &6899131657355713366
+PolygonCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -161,11 +160,11 @@ BoxCollider2D:
   m_CallbackLayers:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: 1, y: 0}
+  m_Offset: {x: 0, y: 0}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -175,51 +174,15 @@ BoxCollider2D:
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  m_Size: {x: 1.3, y: 2.2}
-  m_EdgeRadius: 0
---- !u!61 &-1152116198898644561
-BoxCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2708104932712546828}
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_ForceSendLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_ForceReceiveLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_ContactCaptureLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_CallbackLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_IsTrigger: 1
-  m_UsedByEffector: 0
-  m_CompositeOperation: 0
-  m_CompositeOrder: 0
-  m_Offset: {x: 0, y: -0.8}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 2, y: 2.65625}
-    newSize: {x: 2, y: 2.65625}
-    adaptiveTilingThreshold: 0.5
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
-  m_Size: {x: 1.5, y: 0.71}
-  m_EdgeRadius: 0
+  m_Points:
+    m_Paths:
+    - - {x: -0.26369792, y: -0.42725983}
+      - {x: -0.7715658, y: -0.43012667}
+      - {x: -0.761341, y: -0.7403012}
+      - {x: -0.7709281, y: -1.1545471}
+      - {x: 0.14545098, y: -1.1534319}
+      - {x: 1.6463757, y: -1.1466147}
+      - {x: 1.6435401, y: 1.0933523}
+      - {x: 0.34830534, y: 1.0985126}
+      - {x: 0.3390997, y: -0.4340769}
+  m_UseDelaunayMesh: 1
