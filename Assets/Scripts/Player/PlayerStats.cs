@@ -14,7 +14,7 @@ public class PlayerStats : MonoBehaviour
     public bool canBeDamaged = true;
 
     [Header("XP Parameters")]
-    public int xp;
+    static public int xp;
     public Image xpBar;
     private int baseXp = 0;
     public int playerLevel;
