@@ -5,14 +5,14 @@ using UnityEngine;
 
 public abstract class EnemyBehaviour : MonoBehaviour
 {
-    [SerializeField] private Transform target;
-    [SerializeField] private PlayerStats playerStats;
+    private Transform target;
+    private PlayerStats playerStats;
     [SerializeField] private Animator animator;
     public EnemyStatsSO enemyStats;
     public float baseEnemyDamageFrames = 1.0f;
     public float currentEnemyDamageFrames;
     private bool isEnemyDamaged = false;
-    static public int enemyKillCounter;
+    static public int enemyKillCounter = 0;
 
 
     // current stats
@@ -24,6 +24,9 @@ public abstract class EnemyBehaviour : MonoBehaviour
     {
         PolygonCollider2D polygonCollider2D = gameObject.GetComponent<PolygonCollider2D>();
         polygonCollider2D.isTrigger = true;
+
+        target = FindFirstObjectByType<PlayerStats>().transform;
+        playerStats = FindFirstObjectByType<PlayerStats>();
 
         currentMoveSpeed = enemyStats.movementSpeed;
         currentHealth = enemyStats.enemyHealth;
@@ -38,7 +41,6 @@ public abstract class EnemyBehaviour : MonoBehaviour
         target = GameObject.FindGameObjectWithTag("Player").GetComponent<Transform>();
 
         currentHealth = enemyStats.enemyHealth;
-        enemyKillCounter = 0;
     }
 
     // Update is called once per frame
@@ -65,17 +67,13 @@ public abstract class EnemyBehaviour : MonoBehaviour
         if (currentHealth <= 0)
         {
             Kill();
+            enemyKillCounter++;
         }
     }
 
     public void Kill()
     {
         Destroy(gameObject);
-    }
-
-    private void OnDestroy()
-    {
-        enemyKillCounter++;
     }
 
     private void MoveTowardsPlayer()

@@ -5,7 +5,16 @@ public class UIKillCounter : MonoBehaviour
 {
     [SerializeField] TextMeshProUGUI killCounterText;
 
-    // Update is called once per frame
+    private void Awake()
+    {
+        
+    }
+
+    private void Start()
+    {
+        killCounterText.text = "0";
+    }
+
     void Update()
     {
         KillCounter();
