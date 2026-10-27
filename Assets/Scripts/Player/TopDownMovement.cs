@@ -9,6 +9,7 @@ public class TopDownMovement : MonoBehaviour
     [SerializeField] private InputActionReference moveActionReference;
     [HideInInspector] public bool isPlayerMoving = false;
     private SpriteRenderer spriteRenderer;
+    static public bool facingLeft = false;
 
     private Rigidbody2D rb;
     private Vector2 moveInput;
@@ -62,10 +63,12 @@ public class TopDownMovement : MonoBehaviour
         if (Keyboard.current.aKey.isPressed)
         {
             spriteRenderer.flipX = true;
+            facingLeft = true;
         }
         else if (Keyboard.current.dKey.isPressed)
         {
             spriteRenderer.flipX = false;
+            facingLeft = false;
         }
     }
 }

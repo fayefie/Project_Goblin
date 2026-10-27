@@ -25,11 +25,11 @@ public class SwordBehaviour : MeleeWeaponBehaviour
 
     private void WeaponFacesDirection()
     {
-        if (Keyboard.current.aKey.isPressed)
+        if (TopDownMovement.facingLeft == true)
         {
             spriteRenderer.flipX = true;
         }
-        else if (Keyboard.current.dKey.isPressed)
+        else if (TopDownMovement.facingLeft == false)
         {
             spriteRenderer.flipX = false;
         }
