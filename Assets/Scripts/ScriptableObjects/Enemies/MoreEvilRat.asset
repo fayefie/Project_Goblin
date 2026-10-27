@@ -12,10 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ce5ea0aafc73daa489a0ad4d595c7b9a, type: 3}
   m_Name: MoreEvilRat
   m_EditorClassIdentifier: Assembly-CSharp::EnemyStatsSO
-  enemyHealth: 0
+  enemyHealth: 1
   enemyDamage: 0
-  movementSpeed: 0
-  droppedXP: 0
-  droppedXPSmall: 10
-  droppedXPMedium: 30
-  droppedXPLarge: 100
+  movementSpeed: 1
