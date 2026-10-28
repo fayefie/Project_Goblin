@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1464db50a15559d47918a8dbe4cc53fd, type: 3}
   m_Name: Speed Up
   m_EditorClassIdentifier: Assembly-CSharp::LevelUpOptionsSO
-  upgradeName: Speed up
+  upgradeName: Speed Up
   upgradeDescription: Increases your speed by 0.5
   healthUpgrade: 0
   speedUpgrade: 0.5
