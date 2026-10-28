@@ -3,7 +3,7 @@ using UnityEngine;
 
 public class UIGoldCounter : MonoBehaviour
 {
-    private int goldCounter;
+    static public int goldCounter;
     [SerializeField] TextMeshProUGUI goldCounterText;
 
     // Update is called once per frame

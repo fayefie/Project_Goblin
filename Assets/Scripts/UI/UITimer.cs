@@ -3,8 +3,13 @@ using UnityEngine;
 
 public class UITimer : MonoBehaviour
 {
-    [SerializeField] float elapsedTime;
+    static public float elapsedTime;
     [SerializeField] TextMeshProUGUI timerText;
+
+    private void Awake()
+    {
+        elapsedTime = 0.0f;
+    }
 
     // Update is called once per frame
     void Update()

@@ -89,6 +89,14 @@ public class PlayerStats : MonoBehaviour
         {
             xp++;
         }
+        if (Keyboard.current.lKey.wasReleasedThisFrame)
+        {
+            playerLevel++;
+        }
+        if (Keyboard.current.mKey.wasReleasedThisFrame)
+        {
+            EnemyBehaviour.enemyKillCounter++;
+        }
     }
 
     public void TakeDamage(float damageAmount)
