@@ -3,8 +3,13 @@ using static UnityEngine.GraphicsBuffer;
 
 public class XPOrbBehaviour : MonoBehaviour
 {
-    [SerializeField] private Transform target;
+    private Transform target;
     [SerializeField] private float movementSpeed = 5.0f;
+
+    private void Awake()
+    {
+        target = FindFirstObjectByType<PlayerStats>().transform;
+    }
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()

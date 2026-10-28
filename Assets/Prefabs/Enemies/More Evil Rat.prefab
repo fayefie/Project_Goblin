@@ -178,12 +178,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4aac2fec009952a49a72ced21cac28a2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::RatEnemy
-  target: {fileID: 0}
-  playerStats: {fileID: 0}
   animator: {fileID: 8188661486971322551}
   enemyStats: {fileID: 11400000, guid: a4e86914bfab8a74daba57e093c5031c, type: 2}
   baseEnemyDamageFrames: 0.5
   currentEnemyDamageFrames: 0
+  droppedXP: {fileID: 644963684931887094, guid: 5bcd94329194d0041bc29d1a6de56078, type: 3}
   currentMoveSpeed: 0
   currentHealth: 0
   currentDamage: 0

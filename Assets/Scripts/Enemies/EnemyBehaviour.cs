@@ -13,6 +13,7 @@ public abstract class EnemyBehaviour : MonoBehaviour
     public float currentEnemyDamageFrames;
     private bool isEnemyDamaged = false;
     static public int enemyKillCounter = 0;
+    public GameObject droppedXP;
 
 
     // current stats
@@ -66,14 +67,10 @@ public abstract class EnemyBehaviour : MonoBehaviour
 
         if (currentHealth <= 0)
         {
-            Kill();
+            Instantiate(droppedXP, transform.position, Quaternion.identity);
             enemyKillCounter++;
+            Destroy(gameObject);
         }
-    }
-
-    public void Kill()
-    {
-        Destroy(gameObject);
     }
 
     private void MoveTowardsPlayer()
