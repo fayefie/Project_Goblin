@@ -29,6 +29,9 @@ public class EnemySpawner : MonoBehaviour
     [Header("Spawn Attributes")]
     float spawnTimer; // timer that determines when the next enemy spawns
     public float waveInterval; // the interval between waves
+    public int enemiesAlive; // amount of enemies currently existing
+    public int maxEnemiesAllowed; // how many enemies are allowed to exist at once
+    public bool maxEnemiesReached; // flag for checking if max amount of enemies was reached
     
     Transform player;
 
@@ -85,11 +88,18 @@ public class EnemySpawner : MonoBehaviour
             {
                 if (enemyGroup.spawnCount < enemyGroup.enemyCount)
                 {
+                    if (enemiesAlive >= maxEnemiesAllowed)
+                    {
+                        maxEnemiesReached = true;
+                        return;
+                    }
+
                     Vector2 spawnPosition = new Vector2(player.transform.position.x + Random.Range(-10f, 10f), player.transform.position.y + Random.Range(-10f, 10f));
                     Instantiate(enemyGroup.enemyPrefab, spawnPosition, Quaternion.identity);
 
                     enemyGroup.spawnCount++;
                     waves[currentWaveCount].spawnCount++;
+                    enemiesAlive++;
                 }
             }
         }
