@@ -31,6 +31,12 @@ public class EnemySpawner : MonoBehaviour
     public float waveInterval; // the interval between waves
     
     Transform player;
+    Transform enemyParentEmpty;
+
+    private void Awake()
+    {
+        enemyParentEmpty = GameObject.Find("Enemies").transform;
+    }
 
     void Start()
     {
@@ -86,8 +92,8 @@ public class EnemySpawner : MonoBehaviour
                 if (enemyGroup.spawnCount < enemyGroup.enemyCount)
                 {
                     Vector2 spawnPosition = new Vector2(player.transform.position.x + Random.Range(-10f, 10f), player.transform.position.y + Random.Range(-10f, 10f));
-                    Instantiate(enemyGroup.enemyPrefab, spawnPosition, Quaternion.identity);
-
+                    GameObject SpawnedEnemies = Instantiate(enemyGroup.enemyPrefab, spawnPosition, Quaternion.identity);
+                    SpawnedEnemies.transform.SetParent(enemyParentEmpty);
                     enemyGroup.spawnCount++;
                     waves[currentWaveCount].spawnCount++;
                 }
