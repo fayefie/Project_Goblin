@@ -183,6 +183,7 @@ MonoBehaviour:
   baseEnemyDamageFrames: 0.5
   currentEnemyDamageFrames: 0
   droppedXP: {fileID: 644963684931887094, guid: 5bcd94329194d0041bc29d1a6de56078, type: 3}
+  despawnDistance: 30
   currentMoveSpeed: 0
   currentHealth: 0
   currentDamage: 0

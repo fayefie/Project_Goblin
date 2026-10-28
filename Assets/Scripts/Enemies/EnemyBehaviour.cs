@@ -15,6 +15,7 @@ public abstract class EnemyBehaviour : MonoBehaviour
     static public int enemyKillCounter;
     public GameObject droppedXP;
     Transform xpParentEmpty;
+    public float despawnDistance = 20f;
 
 
     // current stats
@@ -43,6 +44,7 @@ public abstract class EnemyBehaviour : MonoBehaviour
         // find player
         target = GameObject.FindGameObjectWithTag("Player").GetComponent<Transform>();
 
+
         currentHealth = enemyStats.enemyHealth;
     }
 
@@ -55,6 +57,11 @@ public abstract class EnemyBehaviour : MonoBehaviour
         if (isEnemyDamaged == true)
         {
             currentEnemyDamageFrames -= Time.deltaTime;
+        }
+
+        if (Vector2.Distance(transform.position, target.position) >= despawnDistance)
+        {
+            ReturnEnemy();
         }
     }
 
@@ -69,11 +76,23 @@ public abstract class EnemyBehaviour : MonoBehaviour
 
         if (currentHealth <= 0)
         {
-            GameObject DroppedXpOrb = Instantiate(droppedXP, transform.position, Quaternion.identity);
-            DroppedXpOrb.transform.SetParent(xpParentEmpty);
-            enemyKillCounter++;
-            Destroy(gameObject);
+            Kill();
         }
+    }
+
+    public void Kill()
+    {
+        GameObject DroppedXpOrb = Instantiate(droppedXP, transform.position, Quaternion.identity);
+        DroppedXpOrb.transform.SetParent(xpParentEmpty);
+        enemyKillCounter++;
+        Destroy(gameObject);
+    }
+
+    private void OnDestroy()
+    {
+        EnemySpawner es = FindFirstObjectByType<EnemySpawner>();
+
+        es.OnEnemyKilled();
     }
 
     private void MoveTowardsPlayer()
@@ -151,5 +170,11 @@ public abstract class EnemyBehaviour : MonoBehaviour
             animator.SetBool("isDamaged", true);
             isEnemyDamaged = true;
         }
+    }
+
+    void ReturnEnemy()
+    {
+        EnemySpawner es = FindFirstObjectByType<EnemySpawner>();
+        transform.position = target.position + es.relativeSpawnPoints[Random.Range(0, es.relativeSpawnPoints.Count)].position;
     }
 }

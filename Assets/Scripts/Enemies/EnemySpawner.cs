@@ -32,6 +32,9 @@ public class EnemySpawner : MonoBehaviour
     public int enemiesAlive; // amount of enemies currently existing
     public int maxEnemiesAllowed; // how many enemies are allowed to exist at once
     public bool maxEnemiesReached; // flag for checking if max amount of enemies was reached
+
+    [Header("Spawn Positions")]
+    public List<Transform> relativeSpawnPoints; // stores all the relative spawn points of enemeis
     
     Transform player;
     Transform enemyParentEmpty;
@@ -88,26 +91,42 @@ public class EnemySpawner : MonoBehaviour
 
     void SpawnEnemies()
     {
+        // checks if min number of enemies have spawned
         if (waves[currentWaveCount].spawnCount < waves[currentWaveCount].waveQuota)
         {
+            // spawns enemies per type until quota is filled
             foreach (var enemyGroup in waves[currentWaveCount].enemyGroups)
             {
+                // checks if the min number of enemies of specific type have spawned
                 if (enemyGroup.spawnCount < enemyGroup.enemyCount)
                 {
+                    // limits number of enemies that can spawn at once
                     if (enemiesAlive >= maxEnemiesAllowed)
                     {
                         maxEnemiesReached = true;
                         return;
                     }
 
-                    Vector2 spawnPosition = new Vector2(player.transform.position.x + Random.Range(-10f, 10f), player.transform.position.y + Random.Range(-10f, 10f));
-                    GameObject SpawnedEnemies = Instantiate(enemyGroup.enemyPrefab, spawnPosition, Quaternion.identity);
+                    // spawn enemies at random positions close to player
+                    GameObject SpawnedEnemies = Instantiate(enemyGroup.enemyPrefab, player.position + relativeSpawnPoints[Random.Range(0, relativeSpawnPoints.Count)].position, Quaternion.identity);
                     SpawnedEnemies.transform.SetParent(enemyParentEmpty);
+
                     enemyGroup.spawnCount++;
                     waves[currentWaveCount].spawnCount++;
                     enemiesAlive++;
                 }
             }
         }
+
+        // reset maxEnemiesReached if the number of enemies drops below the allowed max amount
+        if (enemiesAlive < maxEnemiesAllowed)
+        {
+            maxEnemiesReached = false;
+        }
+    }
+
+    public void OnEnemyKilled()
+    {
+        enemiesAlive--;
     }
 }
