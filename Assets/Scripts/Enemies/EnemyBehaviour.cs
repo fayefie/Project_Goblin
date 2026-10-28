@@ -12,7 +12,9 @@ public abstract class EnemyBehaviour : MonoBehaviour
     public float baseEnemyDamageFrames = 1.0f;
     public float currentEnemyDamageFrames;
     private bool isEnemyDamaged = false;
-    static public int enemyKillCounter = 0;
+    static public int enemyKillCounter;
+    public GameObject droppedXP;
+    Transform xpParentEmpty;
 
 
     // current stats
@@ -27,6 +29,7 @@ public abstract class EnemyBehaviour : MonoBehaviour
 
         target = FindFirstObjectByType<PlayerStats>().transform;
         playerStats = FindFirstObjectByType<PlayerStats>();
+        xpParentEmpty = GameObject.Find("XP Orbs").transform;
 
         currentMoveSpeed = enemyStats.movementSpeed;
         currentHealth = enemyStats.enemyHealth;
@@ -66,14 +69,11 @@ public abstract class EnemyBehaviour : MonoBehaviour
 
         if (currentHealth <= 0)
         {
-            Kill();
+            GameObject DroppedXpOrb = Instantiate(droppedXP, transform.position, Quaternion.identity);
+            DroppedXpOrb.transform.SetParent(xpParentEmpty);
             enemyKillCounter++;
+            Destroy(gameObject);
         }
-    }
-
-    public void Kill()
-    {
-        Destroy(gameObject);
     }
 
     private void MoveTowardsPlayer()

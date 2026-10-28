@@ -24,6 +24,10 @@ public class PlayerStats : MonoBehaviour
     public TopDownMovement topDownMovement;
     [SerializeField] private Animator animator;
 
+    private void Awake()
+    {
+        EnemyBehaviour.enemyKillCounter = 0;
+    }
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()

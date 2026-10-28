@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 2123614372355057605}
   - component: {fileID: 5073689062319793498}
   m_Layer: 0
-  m_Name: xp orb
+  m_Name: XPOrb
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
