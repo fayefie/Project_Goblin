@@ -4,7 +4,7 @@ using Random = UnityEngine.Random;
 
 public class PlayerLevelUp : MonoBehaviour
 {
-    private LevelUpMenu levelUpMenu;
+    [SerializeField] private LevelUpMenu levelUpMenu;
     private PlayerStats ps;
 
     private bool menuIsOpen = false;
@@ -17,9 +17,22 @@ public class PlayerLevelUp : MonoBehaviour
     {
         levelUpMenu = FindFirstObjectByType<LevelUpMenu>();
         ps = FindFirstObjectByType<PlayerStats>();
+
+        if (levelUpMenu == null)
+        {
+            Debug.LogError("PlayerLevelUp: Could not find LevelUpMenu in the scene!", this);
+        }
+
+        if (ps == null)
+        {
+            Debug.LogError("PlayerLevelUp: Could not find PlayerStats in the scene!", this);
+        }
     }
     void Update()
     {
+        if (ps == null || levelUpMenu == null)
+            return;
+
         PlayerHasLevelledUp();
     }
 
@@ -33,6 +46,15 @@ public class PlayerLevelUp : MonoBehaviour
 
     private void OpenLevelUpMenu()
     {
+        if (levelUpMenu == null || ps == null)
+            return;
+
+        if (availableUpgrades == null || availableUpgrades.Length < 2)
+        {
+            Debug.LogWarning("At least two upgrades must be assigned.", this);
+            return;
+        }
+
         if (availableUpgrades.Length < 2)
         {
             return;

@@ -6,10 +6,11 @@ public class DeathScreen : MonoBehaviour
 {
     [SerializeField] private string gameSceneName;
     [SerializeField] TMP_Text menuHighScore;
+    [SerializeField] private GameObject deathScreenPanel;
 
     private void Awake()
     {
-        gameObject.SetActive(false);
+        deathScreenPanel.SetActive(false);
     }
 
     public void GoToMenu()
@@ -24,7 +25,7 @@ public class DeathScreen : MonoBehaviour
 
     public void ShowDeathMenu()
     {
-        gameObject.SetActive(true);
+        deathScreenPanel.SetActive(true);
         Time.timeScale = 0f;
         int highScoreAsInt = Mathf.FloorToInt(UIScore.highScore);
         menuHighScore.text = ("High Score: " + highScoreAsInt);

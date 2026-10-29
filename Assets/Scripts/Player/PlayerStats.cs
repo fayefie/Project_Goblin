@@ -105,13 +105,13 @@ public class PlayerStats : MonoBehaviour
         if (health <= 0)
         {
             Destroy(gameObject);
+            ds.ShowDeathMenu();
         }
     }
 
     private void OnDestroy()
     {
         CalculateHighScore();
-        ds.ShowDeathMenu();
     }
 
     void CalculateHighScore()

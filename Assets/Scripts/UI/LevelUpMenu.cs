@@ -10,42 +10,37 @@ public class LevelUpMenu : MonoBehaviour
     public TMP_Text upgradeTwoName;
     public TMP_Text upgradeTwoDescription;
 
-    private PlayerLevelUp playerLevelUp;
+    [SerializeField] private GameObject menuPanel;
 
+    private PlayerLevelUp playerLevelUp;
     private PlayerStats ps;
 
     private void Awake()
     {
         ps = FindFirstObjectByType<PlayerStats>();
         playerLevelUp = FindFirstObjectByType<PlayerLevelUp>();
+
         HideMenu();
-    }
-
-    void Start()
-    {
-
     }
 
     void Update()
     {
-        OnLevelUp();
+        if (ps != null && newPlayerLevel != null)
+        {
+            newPlayerLevel.text = "Levelled up to level " + ps.playerLevel + "!";
+        }
     }
 
     public void ShowMenu()
     {
-        gameObject.SetActive(true);
+        menuPanel.SetActive(true);
         Time.timeScale = 0f;
     }
 
     public void HideMenu()
     {
-        gameObject.SetActive(false);
+        menuPanel.SetActive(false);
         Time.timeScale = 1f;
-    }
-
-    void OnLevelUp()
-    {
-        newPlayerLevel.text = ("Levelled up to level " + ps.playerLevel + "!");
     }
 
     public void SetUpgrades(LevelUpOptionsSO upgradeOne, LevelUpOptionsSO upgradeTwo)

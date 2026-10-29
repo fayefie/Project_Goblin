@@ -39,7 +39,6 @@ public class XPOrbBehaviour : MonoBehaviour
         if (collision.gameObject.tag == "Player")
         {
             transform.position = Vector2.MoveTowards(transform.position, target.position, movementSpeed * Time.deltaTime);
-            Debug.Log("colliding");
         }
     }
 }
