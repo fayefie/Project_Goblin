@@ -4,8 +4,9 @@ using UnityEngine;
 
 public class UIScore : MonoBehaviour
 {
-    private float playerScore;
+    public float playerScore;
     [SerializeField] TextMeshProUGUI scoreText;
+    static public float highScore;
 
     private PlayerStats ps;
     void Start()
@@ -17,6 +18,7 @@ public class UIScore : MonoBehaviour
 
     void Update()
     {
+
     }
 
     void PlayerScore()

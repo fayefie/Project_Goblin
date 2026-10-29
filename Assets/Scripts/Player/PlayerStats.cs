@@ -25,11 +25,13 @@ public class PlayerStats : MonoBehaviour
 
     public TopDownMovement topDownMovement;
     [SerializeField] private Animator animator;
+    private UIScore uiScore;
 
     private void Awake()
     {
         EnemyBehaviour.enemyKillCounter = 0;
         playerLevel = baseLevel;
+        uiScore = FindFirstObjectByType<UIScore>();
     }
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -109,6 +111,19 @@ public class PlayerStats : MonoBehaviour
         if (health <= 0)
         {
             Destroy(gameObject);
+        }
+    }
+
+    private void OnDestroy()
+    {
+        CalculateHighScore();
+    }
+
+    void CalculateHighScore()
+    {
+        if (uiScore.playerScore >= UIScore.highScore)
+        {
+            UIScore.highScore = uiScore.playerScore;
         }
     }
 
