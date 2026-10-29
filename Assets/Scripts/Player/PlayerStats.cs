@@ -8,7 +8,7 @@ public class PlayerStats : MonoBehaviour
     [Header("Health Parameters")]
     public float health;
     public Image healthBar;
-    [SerializeField] private float maxHealth = 100.0f;
+    public float maxHealth = 100.0f;
     [SerializeField] private float baseIFrames = 1.0f;
     [SerializeField] private float damageGracePeriod;
     public bool canBeDamaged = true;
@@ -18,8 +18,10 @@ public class PlayerStats : MonoBehaviour
     public Image xpBar;
     private int baseXp = 0;
     public int playerLevel;
+    private int baseLevel;
     public int xpNeededToLevelUp;
     private int xpForFirstLevel = 5;
+    public bool hasPlayerLevelledUp = false;
 
     public TopDownMovement topDownMovement;
     [SerializeField] private Animator animator;
@@ -27,6 +29,7 @@ public class PlayerStats : MonoBehaviour
     private void Awake()
     {
         EnemyBehaviour.enemyKillCounter = 0;
+        playerLevel = baseLevel;
     }
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -82,6 +85,7 @@ public class PlayerStats : MonoBehaviour
         {
             playerLevel++;
             xp = baseXp;
+            hasPlayerLevelledUp = true;
         }
 
         // debug

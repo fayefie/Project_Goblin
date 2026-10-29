@@ -6,9 +6,9 @@ public class MeleeWeaponBehaviour : MonoBehaviour
 
     public WeaponsSO weaponData;
     // current stats
-    protected float currentDamage;
-    protected float currentAttackSpeed;
-    protected float currentCooldownDuration;
+    public float currentDamage;
+    public float currentAttackSpeed;
+    public float currentCooldownDuration;
 
     protected virtual void Awake()
     {
