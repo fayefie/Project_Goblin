@@ -26,12 +26,14 @@ public class PlayerStats : MonoBehaviour
     public TopDownMovement topDownMovement;
     [SerializeField] private Animator animator;
     private UIScore uiScore;
+    private DeathScreen ds;
 
     private void Awake()
     {
         EnemyBehaviour.enemyKillCounter = 0;
         playerLevel = baseLevel;
         uiScore = FindFirstObjectByType<UIScore>();
+        ds = FindFirstObjectByType<DeathScreen>();
     }
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -117,6 +119,7 @@ public class PlayerStats : MonoBehaviour
     private void OnDestroy()
     {
         CalculateHighScore();
+        ds.ShowMenu();
     }
 
     void CalculateHighScore()
