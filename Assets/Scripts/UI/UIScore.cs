@@ -31,7 +31,5 @@ public class UIScore : MonoBehaviour
         int scoreAsInt = Mathf.FloorToInt(playerScore);
 
         scoreText.text = ("Score: " + scoreAsInt);
-
-        Debug.Log(playerScore);
     }
 }
