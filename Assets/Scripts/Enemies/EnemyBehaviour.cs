@@ -16,6 +16,7 @@ public abstract class EnemyBehaviour : MonoBehaviour
     public GameObject droppedXP;
     Transform xpParentEmpty;
     public float despawnDistance = 20f;
+    private bool isDead = false;
 
 
     // current stats
@@ -72,6 +73,8 @@ public abstract class EnemyBehaviour : MonoBehaviour
 
     public void TakeDamage(float dmg)
     {
+        if (isDead) return;
+
         currentHealth -= dmg;
 
         if (currentHealth <= 0)
@@ -82,17 +85,21 @@ public abstract class EnemyBehaviour : MonoBehaviour
 
     public void Kill()
     {
+        if (isDead) return;
+        isDead = true;
+
         GameObject DroppedXpOrb = Instantiate(droppedXP, transform.position, Quaternion.identity);
         DroppedXpOrb.transform.SetParent(xpParentEmpty);
         enemyKillCounter++;
-        Destroy(gameObject);
-    }
 
-    private void OnDestroy()
-    {
         EnemySpawner es = FindFirstObjectByType<EnemySpawner>();
 
-        es.OnEnemyKilled();
+        if (es != null)
+        {
+            es.OnEnemyKilled();
+        }
+
+        Destroy(gameObject);
     }
 
     private void MoveTowardsPlayer()

@@ -189,7 +189,7 @@ PrefabInstance:
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 8392094897183629641, guid: 497be12e4906c5b41b9253a21fe8932e, type: 3}
       insertIndex: 5
-      addedObject: {fileID: 2084604355}
+      addedObject: {fileID: 2084604362}
   m_SourcePrefab: {fileID: 100100000, guid: 497be12e4906c5b41b9253a21fe8932e, type: 3}
 --- !u!1 &22181235
 GameObject:
@@ -239697,16 +239697,78 @@ MonoBehaviour:
   - waveName: Wave 1
     enemyGroups:
     - enemyName: Rat
-      enemyCount: 5
+      enemyCount: 30
       spawnCount: 0
       enemyPrefab: {fileID: 4552870944468649221, guid: 18f01a05f9648104392f9213b1ad459a, type: 3}
     waveQuota: 0
     spawnInterval: 1
     spawnCount: 0
+  - waveName: 'Wave 2 '
+    enemyGroups:
+    - enemyName: Rat
+      enemyCount: 45
+      spawnCount: 0
+      enemyPrefab: {fileID: 4552870944468649221, guid: 18f01a05f9648104392f9213b1ad459a, type: 3}
+    waveQuota: 0
+    spawnInterval: 1
+    spawnCount: 0
+  - waveName: Wave 3
+    enemyGroups:
+    - enemyName: Rat
+      enemyCount: 30
+      spawnCount: 0
+      enemyPrefab: {fileID: 4552870944468649221, guid: 18f01a05f9648104392f9213b1ad459a, type: 3}
+    - enemyName: More Evil Rat
+      enemyCount: 30
+      spawnCount: 0
+      enemyPrefab: {fileID: 4552870944468649221, guid: a55e509c7ee714549ba2976b493f626c, type: 3}
+    waveQuota: 0
+    spawnInterval: 1
+    spawnCount: 0
+  - waveName: 'Wave 4 '
+    enemyGroups:
+    - enemyName: More Evil Rat
+      enemyCount: 45
+      spawnCount: 0
+      enemyPrefab: {fileID: 4552870944468649221, guid: a55e509c7ee714549ba2976b493f626c, type: 3}
+    waveQuota: 0
+    spawnInterval: 1.2
+    spawnCount: 0
+  - waveName: 'Wave 4 '
+    enemyGroups:
+    - enemyName: More Evil Rat
+      enemyCount: 60
+      spawnCount: 0
+      enemyPrefab: {fileID: 4552870944468649221, guid: a55e509c7ee714549ba2976b493f626c, type: 3}
+    waveQuota: 0
+    spawnInterval: 1.2
+    spawnCount: 0
+  - waveName: Wave 5
+    enemyGroups:
+    - enemyName: More Evil Rat
+      enemyCount: 30
+      spawnCount: 0
+      enemyPrefab: {fileID: 4552870944468649221, guid: 18f01a05f9648104392f9213b1ad459a, type: 3}
+    - enemyName: Most Evil Rat
+      enemyCount: 30
+      spawnCount: 0
+      enemyPrefab: {fileID: 4552870944468649221, guid: 129aae3bdfb861248a9c00482967a5f4, type: 3}
+    waveQuota: 0
+    spawnInterval: 1.5
+    spawnCount: 0
+  - waveName: Wave 6
+    enemyGroups:
+    - enemyName: Most Evil Rat
+      enemyCount: 60
+      spawnCount: 0
+      enemyPrefab: {fileID: 4552870944468649221, guid: 129aae3bdfb861248a9c00482967a5f4, type: 3}
+    waveQuota: 0
+    spawnInterval: 1.1
+    spawnCount: 0
   currentWaveCount: 0
-  waveInterval: 3
+  waveInterval: 5
   enemiesAlive: 0
-  maxEnemiesAllowed: 4
+  maxEnemiesAllowed: 50
   maxEnemiesReached: 0
   relativeSpawnPoints:
   - {fileID: 142496725}
@@ -240273,6 +240335,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 81f4d9346b87b5d47925b31b5f30de97, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::UIScore
+  playerScore: 0
   scoreText: {fileID: 1981514609}
 --- !u!1 &2005803399
 GameObject:
@@ -240354,7 +240417,7 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 1002863853561027458, guid: 497be12e4906c5b41b9253a21fe8932e, type: 3}
   m_PrefabInstance: {fileID: 15696028}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &2084604355
+--- !u!114 &2084604362
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}

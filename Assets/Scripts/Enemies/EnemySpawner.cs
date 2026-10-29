@@ -35,9 +35,11 @@ public class EnemySpawner : MonoBehaviour
 
     [Header("Spawn Positions")]
     public List<Transform> relativeSpawnPoints; // stores all the relative spawn points of enemeis
-    
+
     Transform player;
     Transform enemyParentEmpty;
+
+    bool isWaveTransitioning = false;
 
     private void Awake()
     {
@@ -52,29 +54,65 @@ public class EnemySpawner : MonoBehaviour
 
     void Update()
     {
-        if (currentWaveCount < waves.Count && waves[currentWaveCount].spawnCount == 0) // check if prev wave ended and new one should spawn
+        if (currentWaveCount >= waves.Count)
+            return;
+
+        Wave currentWave = waves[currentWaveCount];
+
+        // Spawn enemies at the configured interval.
+        if (currentWave.spawnCount < currentWave.waveQuota)
         {
-            StartCoroutine(BeginNextWave());
+            spawnTimer += Time.deltaTime;
+
+            if (spawnTimer >= currentWave.spawnInterval)
+            {
+                spawnTimer = 0f;
+                SpawnEnemies();
+            }
         }
 
-        spawnTimer += Time.deltaTime;
-
-        if (spawnTimer >= waves[currentWaveCount].spawnInterval)
+        // Transition only after spawning is complete and all enemies are dead.
+        if (currentWave.spawnCount >= currentWave.waveQuota &&
+            enemiesAlive == 0 &&
+            !isWaveTransitioning)
         {
-            spawnTimer = 0f;
-            SpawnEnemies();
+            StartCoroutine(BeginNextWave());
         }
     }
 
     IEnumerator BeginNextWave()
     {
+        isWaveTransitioning = true;
+
+        Debug.Log($"Wave {currentWaveCount + 1} cleared. Waiting {waveInterval} seconds.");
+
         yield return new WaitForSeconds(waveInterval);
 
         if (currentWaveCount < waves.Count - 1)
         {
             currentWaveCount++;
+
+            // Reset the spawn timer.
+            spawnTimer = 0f;
+
+            // Reset counters for the new wave.
+            waves[currentWaveCount].spawnCount = 0;
+
+            foreach (EnemyGroup group in waves[currentWaveCount].enemyGroups)
+            {
+                group.spawnCount = 0;
+            }
+
             CalculateWaveQuota();
+
+            Debug.Log($"Starting wave {currentWaveCount + 1}");
         }
+        else
+        {
+            Debug.Log("All waves completed!");
+        }
+
+        isWaveTransitioning = false;
     }
 
     void CalculateWaveQuota()
@@ -127,6 +165,6 @@ public class EnemySpawner : MonoBehaviour
 
     public void OnEnemyKilled()
     {
-        enemiesAlive--;
+        enemiesAlive = Mathf.Max(0, enemiesAlive - 1);
     }
 }

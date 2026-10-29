@@ -14,4 +14,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::EnemyStatsSO
   enemyHealth: 40
   enemyDamage: 14
-  movementSpeed: 5
+  movementSpeed: 3.5
