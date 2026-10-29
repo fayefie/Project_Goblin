@@ -23,9 +23,7 @@ public class LevelUpMenu : MonoBehaviour
 
     void Start()
     {
-        // fix later
-        //GameObject.Find("Upgrade One Button").GetComponentInChildren<Text>().text = "Select Upgrade";
-        //GameObject.Find("Upgrade Two Button").GetComponentInChildren<Text>().text = "Select Upgrade";
+
     }
 
     void Update()
