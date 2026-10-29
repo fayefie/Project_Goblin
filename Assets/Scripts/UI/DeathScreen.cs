@@ -22,7 +22,7 @@ public class DeathScreen : MonoBehaviour
         Application.Quit();
     }
 
-    public void ShowMenu()
+    public void ShowDeathMenu()
     {
         gameObject.SetActive(true);
         Time.timeScale = 0f;

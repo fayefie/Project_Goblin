@@ -119,7 +119,7 @@ public class PlayerStats : MonoBehaviour
     private void OnDestroy()
     {
         CalculateHighScore();
-        ds.ShowMenu();
+        ds.ShowDeathMenu();
     }
 
     void CalculateHighScore()
